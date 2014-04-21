@@ -1,14 +1,8 @@
 @section("header")
-    <div class="header">
-        <div class="container">
-            <h1>Tutorial</h1>
             @if (Auth::check())
-                <a href="{{ URL::route('logout') }}">logout</a>
-                |
-                <a href="{{ URL::route('users/dashboard') }}">profile</a>
+                <li><a href="{{ URL::route('logout') }}" class="smothscroll">logout</a></li>
+                <li><a href="{{ URL::route('users/dashboard') }}" class="smothscroll">profile</a></li>
             @else
-                <a href="{{ URL::route('home') }}">login</a>
+                <li><a href="{{ URL::route('home') }}" class="smothscroll">login</a></li>
             @endif
-        </div>
-    </div>
 @show

@@ -35,7 +35,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <a class="navbar-brand" href="#"><b>Pratt</b></a>
+	          <a class="navbar-brand" style="padding:8px 20px 0px 0px;" href="#"><img src="../themes/Pratt/assets/img/logo_dotip.png" width="36" alt=""></a>
 	        </div>
 	        <div class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav">
@@ -54,7 +54,7 @@
 	    <div class="container">
 	    	<div class="row centered">
 	    		<div class="col-lg-12">
-					<h1><b>.IP</b></h1>
+					<h1><img src="../themes/Pratt/assets/img/logo_dotip.png" width="128" alt=""></h1>
 					<h3>The easiest way to create redirections</h3>
 					<br>
 	    		</div>
@@ -93,7 +93,7 @@
 				</div>
 				<div class="row centered">
 					<div class="col-lg-6 col-lg-offset-4">
-						<p><b>www.dotip.net/myfolder</b> will be redirect to <b>123.458.785.456</b></p>
+						<p><b>www.dotip.net/myfolder</b> will be redirected to <b>123.458.785.456</b></p>
 					</div>
 				</div>
 				<div class="row centered">
@@ -112,27 +112,31 @@
 	    </div> <!--/ .container -->
 		
 		<br><br><br><br>
-		
-	    <div class="container">	
-	    	<div class="row centered">
-	    		<div class="col-lg-2">
-	    			<h5>Amazing Results</h5>
-	    			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-	    			<img class="hidden-xs hidden-sm hidden-md" src="../themes/Pratt/assets/img/arrow1.png">
-	    		</div>
-	    		<div class="col-lg-8">
-	    			<img class="img-responsive" src="../themes/Pratt/assets/img/app-bg.png" alt="">
-	    		</div>
-	    		<div class="col-lg-2">
-	    			<br>
-	    			<img class="hidden-xs hidden-sm hidden-md" src="../themes/Pratt/assets/img/arrow2.png">
-	    			<h5>Awesome Design</h5>
-	    			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-	    		</div>
-	    	</div>
-	    </div> <!--/ .container -->
+
 	</div><!--/ #headerwrap -->
 
+
+	<section id="desc" name="desc"></section>
+	<!-- INTRO WRAP -->
+	<div id="intro">
+		<div class="container">
+			<div class="row centered">
+				<h1>Login</h1>
+				<br>
+				<div class="col-lg-4 col-lg-offset-4">
+
+					@include('login')			
+
+				</div>
+				<div class="col-lg-4 text-left">
+					<br />
+					<img src="../themes/Pratt/assets/img/intro01.png" alt="">
+				</div>
+			</div>
+			<br>
+			<hr>
+	    </div> <!--/ .container -->
+	</div><!--/ #introwrap -->
 
 	<section id="desc" name="desc"></section>
 	<!-- INTRO WRAP -->
@@ -151,9 +155,6 @@
 					<img src="../themes/Pratt/assets/img/intro02.png" alt="">
 					<h3>Schedule</h3>
 					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-		
-		@include('login')			
-
 				</div>
 				<div class="col-lg-4">
 					<img src="../themes/Pratt/assets/img/intro03.png" alt="">
@@ -164,7 +165,7 @@
 			<br>
 			<hr>
 	    </div> <!--/ .container -->
-	</div><!--/ #introwrap -->
+	</div><!--/ #introwrap -->	
 	
 	<!-- FEATURES WRAP -->
 	<div id="features">
