@@ -32,10 +32,18 @@ App::after(function($request, $response)
 | integrates HTTP Basic authentication for quick, simple checking.
 |
 */
-
+/*
 Route::filter('auth', function()
 {
 	if (Auth::guest()) return Redirect::guest('login');
+});
+*/
+Route::filter("auth", function()
+{
+    if (Auth::guest())
+    {
+        return Redirect::route("home");
+    }
 });
 
 
@@ -54,10 +62,18 @@ Route::filter('auth.basic', function()
 | response will be issued if they are, which you may freely change.
 |
 */
-
+/*
 Route::filter('guest', function()
 {
 	if (Auth::check()) return Redirect::to('/');
+});
+*/
+Route::filter("guest", function()
+{
+    if (Auth::check())
+    {
+        return Redirect::route("user/profile");
+    }
 });
 
 /*

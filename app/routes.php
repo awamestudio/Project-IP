@@ -11,7 +11,38 @@
 |
 */
 
-Route::get('/', function()
+Route::group(["before" => "guest"], function()
 {
-	return View::make('hello');
+    Route::get("home", [
+        "as"   => "home",
+        "uses" => "HomeController@home"
+    ]);
+    Route::post("home", [
+        "as"   => "home",
+        "uses" => "HomeController@doLogin"
+    ]);
+	
+    Route::any("request", [
+        "as"   => "request",
+        "uses" => "HomeController@requestAction"
+    ]);
+    Route::any("reset", [
+        "as"   => "reset",
+        "uses" => "HomeController@resetAction"
+    ]);
 });
+
+
+Route::group(["before" => "auth"], function()
+{
+    Route::any("users/dashboard", [
+        "as"   => "users/dashboard",
+        "uses" => "HomeController@profileAction"
+    ]);
+    Route::any("logout", [
+        "as"   => "logout",
+        "uses" => "HomeController@doLogout"
+    ]);
+});
+
+
