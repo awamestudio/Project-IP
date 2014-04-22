@@ -55,13 +55,29 @@
 	    	<div class="row centered">
 	    		<div class="col-lg-12">
 					<h1><img src="../themes/Pratt/assets/img/logo_dotip.png" width="128" alt=""></h1>
-					<h3>The easiest way to create redirections</h3>
+					<h3>The easiest & simpliest way to create redirections</h3>
 					<br>
+	    		</div>
+	    		<div class="col-lg-8 col-lg-offset-2">
+					<p class="text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 	    		</div>
 			</div>
 		</div>
 		<div class="container">
-			<form class="form-createredirection" role="form">
+		
+			@if ($errors->any())
+			<ul style="color:red;">
+			{{ print_r($errors); }}
+			{{ implode('', $errors->all('<li>:message</li>')) }}
+			</ul>
+			@endif
+			@if (Session::has('message'))
+			<p>{{ Session::get('message') }}</p>
+			@endif
+			
+			{{ Form::open(array('url' => 'home/create')) }}
+			
+				{{ Form::hidden('form_name', 'create'); }}
 
 				<div class="row centered">
 					<div class="col-lg-2 col-lg-offset-2">
@@ -69,15 +85,22 @@
 					</div>
 					
 					<div class="col-lg-3 text-left">
-						<label for="baseurl" class="control-label text-left">base url</label>
-						<select class="form-control" id="baseurl">
-						  <option>www.dotip.net/</option>
-						  <option>www.threezeroone.net/</option>
-						</select>
+						<label for="domain_id" class="control-label text-left">base url</label>
+						<?php
+						$domains = array();
+						foreach(DB::table('domains')->get() as $value)
+						{
+							$domains = $domains + array($value->id => 'www.' . $value->domain);
+						}
+						?>
+
+						{{ Form::select('domain_id', $domains, 1, array('class'=>'form-control')); }}
+
 					</div>
 					<div class="col-lg-2 text-left">
-						<label for="baseurl" class="control-label text-left">base url</label>
-						<input type="text" id="rootaddress" class="form-control" placeholder="myproject" required autofocus>
+						<label for="dirname" class="control-label text-left">base url</label>
+						
+						{{ Form::text('dirname', Input::old('dirname'), array('class'=>'form-control','placeholder'=>'myproject','required','autofocus')) }}
 					</div>
 				</div>
 				<br />
@@ -87,8 +110,10 @@
 					</div>
 					
 					<div class="col-lg-5 text-left">
-						<label for="ipaddress" class="control-label text-left">IP address or URL</label>
-						<input type="text" id="ipaddress" class="form-control" placeholder="195.452.125.458 or www.domain.com" required autofocus>
+						<label for="destination" class="control-label text-left">IP address or URL</label>
+						
+						{{ Form::text('destination', Input::old('destination'), array('class'=>'form-control','placeholder'=>'195.452.125.458 or www.domain.com','required','autofocus')) }}
+
 					</div>
 				</div>
 				<div class="row centered">
@@ -97,18 +122,24 @@
 					</div>
 				</div>
 				<div class="row centered">
-					<label for="inputPassword3" class="col-lg-3 col-lg-offset-3 control-label text-right">email</label>
+					<label for="email" class="col-lg-3 col-lg-offset-3 control-label text-right">email</label>
 					<div class="col-lg-3">
-						<input type="email" class="form-control" placeholder="email@domain.com" required autofocus>
+
+						{{ Form::email('email', Input::old('email'), array('class'=>'form-control','placeholder' => 'email@domain.com','required','autofocus')) }}
+						
 					</div>
 				</div>
 				<br />
 				<div class="row centered">
 					<div class="col-lg-3 col-lg-offset-6">
-						<button class="btn btn-lg btn-primary btn-block" type="submit">create this redirection *</button>
+					
+						{{ Form::submit('create this redirection *', array('class'=>'btn btn-lg btn-primary btn-block')) }}
+
 					</div>
 				</div>
-			</form>
+				
+				{{ Form::close() }}
+				
 	    </div> <!--/ .container -->
 		
 		<br><br><br><br>

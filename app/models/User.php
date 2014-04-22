@@ -79,5 +79,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return $this->email;
 	}
-
+	
+	// model function to store form data to database
+	public static function saveFormData($data)
+	{
+		DB::table('users')->insert($data);
+	}
 }

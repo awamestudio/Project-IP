@@ -1,5 +1,6 @@
-<!-- app/views/login.blade.php -->
-{{ Form::open(array('url' => 'home')) }}
+{{ Form::open(array('url' => 'home/login')) }}
+
+	{{ Form::hidden('form_name', 'login'); }}
 
 	<!-- if there are login errors, show them here -->
 	<div class="col-lg-12 text-left  alert alert-danger">
@@ -9,7 +10,7 @@
 
 	<div class="col-lg-12 text-left">
 		{{ Form::label('email', 'Email Address', array('class'=>'control-label')) }}
-		{{ Form::text('email', Input::old('email'), array('class'=>'form-control','placeholder' => 'awesome@awesome.com')) }}
+		{{ Form::email('email', Input::old('email'), array('class'=>'form-control','placeholder' => 'awesome@awesome.com')) }}
 	</div>
 	<br />
 	<div class="col-lg-12 text-left">

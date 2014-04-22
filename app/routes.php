@@ -13,22 +13,50 @@
 
 Route::group(["before" => "guest"], function()
 {
-    Route::get("home", [
-        "as"   => "home",
-        "uses" => "HomeController@home"
+/*
+	Route::get('register', function(){
+		return View::make('register');
+	});
+	*/
+	/*
+	Route::post('register_action', function()
+	{
+		$obj = new RegisterController() ;
+		return $obj->store();
+	});	
+	*/
+
+
+
+	
+/*
+    Route::get("register", [
+        "as"   => "register",
+        "uses" => "UserController@home"
     ]);
-    Route::post("home", [
-        "as"   => "home",
-        "uses" => "HomeController@doLogin"
+*/
+
+	Route::get('home', function(){
+		return View::make('home');
+	});
+	
+	
+    Route::post("home/login", [
+        "uses" => "UserController@doLogin"
     ]);
+	
+    Route::post("home/create", [
+        "uses" => "RedirectionController@store"
+    ]);
+	
 	
     Route::any("request", [
         "as"   => "request",
-        "uses" => "HomeController@requestAction"
+        "uses" => "UserController@requestAction"
     ]);
     Route::any("reset", [
         "as"   => "reset",
-        "uses" => "HomeController@resetAction"
+        "uses" => "UserController@resetAction"
     ]);
 });
 
@@ -37,12 +65,24 @@ Route::group(["before" => "auth"], function()
 {
     Route::any("users/dashboard", [
         "as"   => "users/dashboard",
-        "uses" => "HomeController@profileAction"
+        "uses" => "UserController@profileAction"
     ]);
     Route::any("logout", [
         "as"   => "logout",
-        "uses" => "HomeController@doLogout"
+        "uses" => "UserController@doLogout"
     ]);
+});
+
+// ===============================================
+// 404 ===========================================
+// ===============================================
+
+App::missing(function($exception)
+{
+
+	// shows an error page (app/views/error.blade.php)
+	// returns a page not found error
+	return Response::view('error', array(), 404);
 });
 
 
