@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(["before" => "guest"], function()
+Route::group(array("before" => "guest"), function()
 {
 /*
 	Route::get('register', function(){
@@ -41,36 +41,40 @@ Route::group(["before" => "guest"], function()
 	});
 	
 	
-    Route::post("home/login", [
+    Route::post("home/login", array(
         "uses" => "UserController@doLogin"
-    ]);
+    ));
 	
-    Route::post("home/create", [
+    Route::post("home/create", array(
         "uses" => "RedirectionController@store"
-    ]);
+    ));
 	
-	
-    Route::any("request", [
+    Route::any("request", array(
         "as"   => "request",
         "uses" => "UserController@requestAction"
-    ]);
-    Route::any("reset", [
+    ));
+    Route::any("reset", array(
         "as"   => "reset",
         "uses" => "UserController@resetAction"
-    ]);
+    ));
 });
 
 
-Route::group(["before" => "auth"], function()
+Route::group(array("before" => "auth"), function()
 {
-    Route::any("users/dashboard", [
+    Route::any("users/dashboard", array(
         "as"   => "users/dashboard",
         "uses" => "UserController@profileAction"
-    ]);
-    Route::any("logout", [
+    ));
+	
+    Route::post("home/addnew", array(
+        "uses" => "RedirectionController@addnew"
+    ));		
+	
+    Route::any("logout", array(
         "as"   => "logout",
         "uses" => "UserController@doLogout"
-    ]);
+    ));
 });
 
 // ===============================================

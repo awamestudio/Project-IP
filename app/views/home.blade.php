@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pratt - Free Bootstrap 3 Theme">
-    <meta name="author" content="Alvarez.is - BlackTie.co">
+    <meta name="description" content=".IP">
+    <meta name="author" content=".IP Team">
     <link rel="shortcut icon" href="themes/Pratt/assets/ico/favicon.png">
 
     <title>.IP - Easy redirection</title>
@@ -35,7 +35,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <a class="navbar-brand" style="padding:8px 20px 0px 0px;" href="#"><img src="../themes/Pratt/assets/img/logo_dotip.png" width="36" alt=""></a>
+	          <a class="navbar-brand" style="padding:8px 20px 0px 0px;" href="#"><img src="../themes/Pratt/assets/img/logo_dotip_beta.png" height="36" alt=""></a>
 	        </div>
 	        <div class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav">
@@ -54,7 +54,7 @@
 	    <div class="container">
 	    	<div class="row centered">
 	    		<div class="col-lg-12">
-					<h1><img src="../themes/Pratt/assets/img/logo_dotip.png" width="128" alt=""></h1>
+					<h1><img src="../themes/Pratt/assets/img/logo_dotip_beta.png" height="128" alt=""></h1>
 					<h3>The easiest & simpliest way to create redirections</h3>
 					<br>
 	    		</div>
@@ -67,7 +67,6 @@
 		
 			@if ($errors->any())
 			<ul style="color:red;">
-			{{ print_r($errors); }}
 			{{ implode('', $errors->all('<li>:message</li>')) }}
 			</ul>
 			@endif
@@ -85,7 +84,7 @@
 					</div>
 					
 					<div class="col-lg-3 text-left">
-						<label for="domain_id" class="control-label text-left">base url</label>
+						<label for="domain_id" class="control-label text-left">Domain</label>
 						<?php
 						$domains = array();
 						foreach(DB::table('domains')->get() as $value)
@@ -98,9 +97,10 @@
 
 					</div>
 					<div class="col-lg-2 text-left">
-						<label for="dirname" class="control-label text-left">base url</label>
+						<label for="dirname" class="control-label text-left">Directory name</label>
 						
-						{{ Form::text('dirname', Input::old('dirname'), array('class'=>'form-control','placeholder'=>'myproject','required','autofocus')) }}
+						{{ Form::text('dirname', Input::old('dirname'), array('class'=>'form-control','placeholder'=>'directoryname','required','autofocus')) }}
+						
 					</div>
 				</div>
 				<br />
@@ -110,19 +110,19 @@
 					</div>
 					
 					<div class="col-lg-5 text-left">
-						<label for="destination" class="control-label text-left">IP address or URL</label>
+						<label for="destination" class="control-label text-left">URL or IP address</label>
 						
-						{{ Form::text('destination', Input::old('destination'), array('class'=>'form-control','placeholder'=>'195.452.125.458 or www.domain.com','required','autofocus')) }}
+						{{ Form::text('destination', Input::old('destination'), array('class'=>'form-control','placeholder'=>'www.domain.com or 73.60.114.126','required','autofocus')) }}
 
 					</div>
 				</div>
 				<div class="row centered">
 					<div class="col-lg-6 col-lg-offset-4">
-						<p><b>www.dotip.net/myfolder</b> will be redirected to <b>123.458.785.456</b></p>
+						<p><b>www.dotip.net/directoryname</b><br />will be redirected to <b>73.60.114.126</b></p>
 					</div>
 				</div>
 				<div class="row centered">
-					<label for="email" class="col-lg-3 col-lg-offset-3 control-label text-right">email</label>
+					<label for="email" class="col-lg-3 col-lg-offset-3 control-label text-right">Email</label>
 					<div class="col-lg-3">
 
 						{{ Form::email('email', Input::old('email'), array('class'=>'form-control','placeholder' => 'email@domain.com','required','autofocus')) }}

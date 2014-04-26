@@ -27,37 +27,37 @@
   <body data-spy="scroll" data-offset="0" data-target="#navigation">
 
     <!-- Fixed navbar -->
-	    <div id="navigation" class="navbar navbar-default navbar-fixed-top">
-	      <div class="container">
-	        <div class="navbar-header">
-	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </button>
-	          <a class="navbar-brand" href="#"><b>DASHBOARD</b></a>
-	        </div>
-	        <div class="navbar-collapse collapse">
-	          <ul class="nav navbar-nav">
-	            <li class="active"><a href="#home" class="smothscroll">Home</a></li>
-				@include("header")
-	          </ul>
-	        </div><!--/.nav-collapse -->
-	      </div>
-	    </div>
+	<div id="navigation" class="navbar navbar-default navbar-fixed-top">
+	  <div class="container">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </button>
+		  <a class="navbar-brand"  style="padding:8px 20px 0px 0px;" href="#"><img src="../../themes/Pratt/assets/img/logo_dotip_beta.png" height="36" alt=""> <b>DASHBOARD</b></a>
+		</div>
+		<div class="navbar-collapse collapse">
+		  <ul class="nav navbar-nav">
+			<li class="active"><a href="#home" class="smothscroll">Home</a></li>
+			@include("header")
+		  </ul>
+		</div><!--/.nav-collapse -->
+	  </div>
+	</div>
 
-
-	<section id="home" name="home"></section>
-	<div id="headerwrap">
+	<div id="intro">
 		<div class="container">
+			<div class="row centered">
 			@yield("content")
+			</div>
 	    </div> <!--/ .container -->
 	</div><!--/ #headerwrap -->
 
 
 	<div id="c">
 		<div class="container">
-			<p>Created by <a href="http://www.blacktie.co">BLACKTIE.CO</a></p>
+			<p><a href="http://www.blacktie.co">.IP</a> 2014</p>
 		
 		</div>
 	</div>

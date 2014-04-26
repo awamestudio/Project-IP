@@ -35,8 +35,8 @@ class RedirectionController extends BaseController {
 		
 		$rule  =  array(
 				'email'			=> 'required|email|unique:users',
-				'dirname'		=> 'required|alpha_num',
-				'destination'	=> 'required|alpha_num',
+				'dirname'		=> 'required|alpha_dash',
+				'destination'	=> 'required',
 			) ;
 
 		$validator = Validator::make($data,$rule);
@@ -75,7 +75,7 @@ class RedirectionController extends BaseController {
 			 */
 
 			$data_redirection = array();
-			$data_redirection['user_id'] = DB::table('users')->where('email', $data['email'])->first()->id;;
+			$data_redirection['user_id'] = DB::table('users')->where('email', $data['email'])->first()->id;
 			$data_redirection['domain_id'] = $data['domain_id'];
 			$data_redirection['dirname'] = $data['dirname'];
 			$data_redirection['destination'] = $data['destination'];
@@ -88,6 +88,43 @@ class RedirectionController extends BaseController {
 		}
 	}	
 	
+	public function addnew()
+	{
+		$data =  Input::except(array('_token')) ;
+		
+		$rule  =  array(
+				'dirname'		=> 'required|alpha_dash',
+				'destination'	=> 'required',
+			) ;
+
+		$validator = Validator::make($data,$rule);
+
+		if ($validator->fails())
+		{
+				return Redirect::to('users/dashboard')
+						->withErrors($validator->messages());
+		}
+		else
+		{
+		
+			/**
+			 * Save Redirection
+			 *
+			 */
+
+			$data_redirection = array();
+			$data_redirection['user_id'] = $data['user_id'];
+			$data_redirection['domain_id'] = $data['domain_id'];
+			$data_redirection['dirname'] = $data['dirname'];
+			$data_redirection['destination'] = $data['destination'];
+			
+			// Save data to the database
+			Redirection::saveFormData($data_redirection);
+
+			return Redirect::to('users/dashboard')
+					->withMessage('Data inserted');
+		}
+	}	
 	
 	/**
 	 * Display the specified resource.
